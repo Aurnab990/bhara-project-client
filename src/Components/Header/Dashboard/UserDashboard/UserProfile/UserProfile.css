@@ -1,0 +1,111 @@
+/* General Layout */
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .sidebar {
+    flex: 0.3;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-content {
+    flex: 0.7;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #3b82f6;
+  }
+  
+  .profile-name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 15px;
+  }
+  
+  .profile-title {
+    font-size: 16px;
+    color: #6b7280;
+    margin-top: 5px;
+  }
+  
+  /* Profile Content */
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #374151;
+  }
+  
+  .info-card {
+    background-color: #f3f4f6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .info-card p {
+    margin: 10px 0;
+    color: #374151;
+    font-size: 16px;
+  }
+  
+  /* Verification Status */
+  .verified {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .not-verified {
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* Update Button */
+  .update-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #3b82f6;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .update-btn:hover {
+    background-color: #2563eb;
+    transform: scale(1.05);
+  }
+  

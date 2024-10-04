@@ -1,0 +1,11 @@
+    { name: 'Canon DSLR Camera', image: 'https://images.unsplash.com/photo-1499696786230-3ebd9d0d6fd8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2Fub24lMjBjYW1lcmF8ZW58MHx8MHx8fDA%3D', price: 500, category: 'Electronics', reviews: '★★★★★ (120 reviews)' },
+    { name: 'MacBook Pro', image: 'https://www.zdnet.com/a/img/2020/11/16/37e33024-2892-4bb7-9d21-6ac6f7544def/apple-macbook-pro-m1-2020-5.jpg', price: 1500, category: 'Electronics', reviews: '★★★★☆ (89 reviews)' },
+    { name: 'Leather Sofa', image: 'https://hatil-image.s3.ap-southeast-1.amazonaws.com/Nop_Image/HATIL%20Sofa%20Set%20Hyperbole-317%20(1%2B2%2B2%20Seat)2.jpg', price: 800, category: 'Furniture', reviews: '★★★★☆ (65 reviews)' },
+    { name: 'Mountain Bike', image: 'https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg', price: 350, category: 'Sports', reviews: '★★★★★ (180 reviews)' },
+    { name: 'Noise Cancelling Headphones', image: 'https://www.travelandleisure.com/thmb/fZjYRxxxi98bqT54xeuuKEXGNGM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/AL-bose-noise-canceling-headphones-700-tamara-staples-social-d4972f992b66448896dcebc85ec550f4.jpg', price: 200, category: 'Electronics', reviews: '★★★★☆ (45 reviews)' },
+    { name: 'Smart TV', image: 'https://wholesaleelectronics.com.bd/wp-content/uploads/2024/08/md08001872-DZ02-jpg.jpg', price: 1200, category: 'Electronics', reviews: '★★★★☆ (98 reviews)' },
+    { name: 'Electric Guitar', image: 'https://www.ibanez.com/common/product_artist_file/file/pc_main_electric_guitars_eu.jpg', price: 700, category: 'Music', reviews: '★★★★★ (150 reviews)' },
+    { name: 'Gaming Console', image: 'https://cdn.thewirecutter.com/wp-content/media/2023/05/gamingconsoles-2048px-00730-3x2-1.jpg', price: 400, category: 'Electronics', reviews: '★★★★☆ (110 reviews)' },
+    { name: 'Kitchen Appliances', image: 'https://img.taste.com.au/dD_Vt3rc/taste/2022/08/best-appliances-to-leave-on-benchtop-180819-2.jpg', price: 250, category: 'Home', reviews: '★★★★☆ (75 reviews)' },
+    { name: 'Office Chair', image: 'https://afrashopbd.com/public/storage/images/products/product_1723483062_4760.jpg', price: 150, category: 'Furniture', reviews: '★★★★★ (210 reviews)' },
+    // More products can be added here
