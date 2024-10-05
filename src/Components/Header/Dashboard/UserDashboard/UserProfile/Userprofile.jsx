@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import UserSidebar from "../../UserSIdeBar/UserSidebar.jsx";
 import '../UserProfile/UserProfile.css';
+import Usersidebar from '../../UserSIdeBar/Usersidebar';
 
 const Userprofile = () => {
     const [user, setUser] = useState({
@@ -22,7 +22,7 @@ const Userprofile = () => {
     return (
         <div className="min-h-screen flex flex-col lg:flex-row">
             {/* Sidebar */}
-            <UserSidebar />
+            <Usersidebar/>
 
             {/* Main content */}
             <div className="w-full lg:w-4/5 bg-gray-100 p-8 lg:-mt-10">

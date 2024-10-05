@@ -26,6 +26,11 @@ const SignUp = () => {
                         email: data?.user?.email,
                         password: password,
                         phone: userPhoneNumber,
+                        zipcode:"",
+                        thana:"",
+                        zila:"",
+                        district:"",
+                        verification:""
                     };
                     return fetch('http://localhost:3000/users',{
                         method: "POST",

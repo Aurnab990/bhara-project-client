@@ -1,5 +1,7 @@
 import React from 'react';
-import UserSidebar from '../UserSIdeBar/UserSidebar';
+import Usersidebar from '../UserSIdeBar/Usersidebar';
+
+
 
 
 const UserDashboard = () => {
@@ -7,7 +9,7 @@ const UserDashboard = () => {
     return (
         <div className="min-h-screen flex flex-col lg:flex-row">
             {/* Sidebar */}
-            <UserSidebar/>
+            <Usersidebar/>
 
             {/* Main content */}
             <div className="w-full lg:w-4/5 bg-gray-100 p-8">

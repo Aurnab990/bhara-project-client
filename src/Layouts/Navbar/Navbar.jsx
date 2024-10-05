@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import '../../Layouts/Navbar/Navbar.css';
 import logo from '../../assets/logo.jpg';
 import { Link } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 
 const Navbar = () => {
+    const {user}= useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showNavbar, setShowNavbar] = useState(true);
     const [lastScrollTop, setLastScrollTop] = useState(0);
@@ -90,10 +92,25 @@ const Navbar = () => {
                                 </Link>
                             </li>
                            
+                            {
+                                user?
+                                <Link to={"/user/dashboard"}>
+                            <li>
+                                <a
+                                   
+                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                    aria-label="Sign up"
+                                    title="Sign up"
+                                >
+                                    Dashboard
+                                </a>
+                            </li>
+                            </Link>
+                            :
                             <Link to={"/sign-in"}>
                             <li>
                                 <a
-                                    href="/"
+                                    
                                     className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                                     aria-label="Sign up"
                                     title="Sign up"
@@ -102,6 +119,7 @@ const Navbar = () => {
                                 </a>
                             </li>
                             </Link>
+                            }
                         </ul>
                         <div className="lg:hidden">
                             <button
