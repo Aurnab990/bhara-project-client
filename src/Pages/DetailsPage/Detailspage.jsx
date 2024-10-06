@@ -2,17 +2,19 @@ import React from 'react';
 import { MapPinIcon, CheckCircleIcon } from '@heroicons/react/24/solid'; // Icons for location and verification
 import Navbar from '../../Layouts/Navbar/Navbar';
 import Footer from '../../Layouts/Footer/Footer';
+import { useLoaderData } from 'react-router-dom';
 
 const ProductDetails = () => {
+    const { _id,name, image, price, category, reviews, description, location, providerName } = useLoaderData();
     return (
         <div>
-            <Navbar />
+
             <div className="bg-gray-100 p-4">
                 <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row max-w-full mx-auto">
                     {/* Image Section */}
                     <div className="flex-shrink-0 w-full md:w-1/2 mb-4 lg:mt-12 md:mb-0">
                         <img 
-                            src="https://www.zdnet.com/a/img/2020/11/16/37e33024-2892-4bb7-9d21-6ac6f7544def/apple-macbook-pro-m1-2020-5.jpg" 
+                            src={image} 
                             alt="Product" 
                             className="w-full h-auto rounded-lg object-cover" 
                         />
@@ -32,12 +34,12 @@ const ProductDetails = () => {
                                 <tbody>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Name</td>
-                                        <td className="py-2 px-4 border-b">Product Name</td>
+                                        <td className="py-2 px-4 border-b">{name}</td>
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Price</td>
                                         <td className="py-2 px-4 border-b">
-                                            <span className="text-blue-600 font-bold">৳800.00</span>
+                                            <span className="text-blue-600 font-bold">৳{price}</span>
                                             <span className="line-through text-gray-500 ml-2">৳1000.00</span>
                                         </td>
                                     </tr>
@@ -97,15 +99,7 @@ const ProductDetails = () => {
                 <div className="bg-white rounded shadow-lg p-3 mt-6 w-full">
                     <h2 className="text-xl font-semibold mb-2">Description</h2>
                     <p className="text-gray-600">
-                    Key Features of This Design
-Modern Layout: The product image is displayed prominently alongside the product details, creating a visually appealing layout.
-Clear Information Hierarchy: The use of different font sizes and colors helps to establish a clear hierarchy of information, making it easy for users to scan and find what they need.
-Stylish Button: The "RENT NOW" button stands out, encouraging users to take action.
-Responsive Design: The layout adjusts nicely on smaller screens, maintaining usability without sacrificing aesthetics.
-How to Use
-Component: Integrate the ProductDetails component into your application where you want to display product details.
-Styles: Make sure to include the CSS styles in your global stylesheet or import them accordingly.
-Feel free to modify colors, margins, and font sizes to match your design vision! Let me know if you’d like any further adjustments.
+                    {description}
                     </p>
                 </div>
             </div>

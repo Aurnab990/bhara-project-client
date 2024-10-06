@@ -61,14 +61,14 @@ const Navbar = () => {
                         </a>
                         <ul className="flex items-center hidden space-x-8 lg:flex">
                             <li>
-                                <a
-                                    href="/"
+                                <Link
+                                    to={"/"}
                                     aria-label="Our product"
                                     title="Our product"
                                     className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
                                 >
                                     Home
-                                </a>
+                                </Link>
                             </li>
                             
                             <li>
@@ -192,14 +192,14 @@ const Navbar = () => {
                                         <nav>
                                             <ul className="space-y-4">
                                                 <li>
-                                                    <a
-                                                        href="/"
+                                                    <Link
+                                                        to={"/"}
                                                         aria-label="Our product"
                                                         title="Our product"
                                                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                     >
                                                         Home
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                                 <li>
                                                     <a

@@ -22,7 +22,7 @@ const SignIn = () => {
                     
                 });
                 setTimeout(() => {
-                    navigate('/user/dashboard'); 
+                    navigate('/'); 
                 }, 2000);
             }
         } catch (error) {
