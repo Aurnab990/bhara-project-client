@@ -33,7 +33,7 @@ const Navbar = () => {
     return (
         <div className={`sticky top-0 z-50 transition-transform duration-300 ${showNavbar ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
             <div className="bg-white border-2">
-                <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+                <div className="px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                     <div className="relative flex items-center justify-between">
                         <a
                             href="/"
@@ -232,18 +232,34 @@ const Navbar = () => {
                                                     </a>
                                                 </li>
                                                 
-                                                <Link to={"/sign-in"}>
+                                                {
+                                                    user?
+                                                    <Link to={"/user/dashboard"}>
                                                 <li>
                                                     <a
-                                                        href="/"
+                                                        
                                                         className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                                                         aria-label="Sign up"
                                                         title="Sign up"
                                                     >
-                                                        ভাড়া দিন
+                                                        Dashboard
                                                     </a>
                                                 </li>
                                                 </Link>
+                                                :
+                                                <Link to={"/sign-in"}>
+                                                <li>
+                                                    <a
+                                                        
+                                                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                        aria-label="Sign up"
+                                                        title="Sign up"
+                                                    >
+                                                        Give Rent
+                                                    </a>
+                                                </li>
+                                                </Link>
+                                                }
                                             </ul>
                                         </nav>
                                     </div>

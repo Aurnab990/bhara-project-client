@@ -42,25 +42,26 @@ const SignUp = () => {
                 }
             })
             if (response) {
-                toast.success('Account created successfully!', {
-                    
-                });
+                toast.success('Account created successfully!');
                 setTimeout(() => {
                     navigate('/user/dashboard'); 
                 }, 2000);
             }
         } catch (error) {
-            
-            toast.error('Wrong Password. Please try again.', {
-                
-            });
+            toast.error('Something went wrong. Please try again.');
         }
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+            {/* Notification Bar */}
+            <div className="w-full bg-red-600 text-white text-center py-2">
+                <marquee>Fill the form correctly. Unless we can't be verify the account. And You can't create the account. So create the account with perfect information.</marquee>
+            </div>
+
             <ToastContainer /> 
-            <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+            
+            <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full mt-4">
                 <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">Create Your Account</h2>
 
                 <form onSubmit={handleSignUp}>
