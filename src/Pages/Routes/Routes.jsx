@@ -8,6 +8,9 @@ import UserDashboard from "../../Components/Header/Dashboard/UserDashboard/UserD
 import HelpAndSupport from "../Help&Support/HelpAndSupport.jsx";
 import Userprofile from "../../Components/Header/Dashboard/UserDashboard/UserProfile/userProfile.jsx";
 import Detailspage from "../DetailsPage/Detailspage.jsx";
+import Updateuser from "../../Components/Header/Dashboard/UserDashboard/UpdateUser/Updateuser.jsx";
+import Addproduct from "../../Components/Header/Dashboard/UserDashboard/AddProduct/Addproduct.jsx";
+import Manageitems from "../../Components/Header/Dashboard/UserDashboard/ManageItems/Manageitems.jsx";
 
 
 export const router = createBrowserRouter([
@@ -47,6 +50,34 @@ export const router = createBrowserRouter([
                 <Userprofile></Userprofile>
             </Private>
         )
+
+    },
+    {
+        path: "/user/add-product",
+        element:(
+            <Private>
+                <Addproduct></Addproduct>
+            </Private>
+        )
+
+    },
+    {
+        path: "/user/manage-product",
+        element:(
+            <Private>
+                <Manageitems></Manageitems>
+            </Private>
+        )
+
+    },
+    {
+        path: "/user/update/:id",
+        element:(
+            <Private>
+                <Updateuser></Updateuser>
+            </Private>
+        ),
+        loader:({params})=>fetch(`http://localhost:3000/users/${params.id}`)
 
     },
     {

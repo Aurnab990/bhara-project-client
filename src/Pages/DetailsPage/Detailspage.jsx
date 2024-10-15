@@ -5,7 +5,7 @@ import Footer from '../../Layouts/Footer/Footer';
 import { useLoaderData } from 'react-router-dom';
 
 const ProductDetails = () => {
-    const { _id,name, image, price, category, reviews, description, location, providerName } = useLoaderData();
+    const { _id,productName, image, price, category, description, road,thana,zila,rentalDay,phone, userName } = useLoaderData();
     return (
         <div>
 
@@ -34,12 +34,12 @@ const ProductDetails = () => {
                                 <tbody>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Name</td>
-                                        <td className="py-2 px-4 border-b">{name}</td>
+                                        <td className="py-2 px-4 border-b">{productName}</td>
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Price</td>
                                         <td className="py-2 px-4 border-b">
-                                            <span className="text-blue-600 font-bold">৳{price}</span>
+                                            <span className="text-blue-600 font-bold">৳{price} per day</span>
                                             <span className="line-through text-gray-500 ml-2">৳1000.00</span>
                                         </td>
                                     </tr>
@@ -49,18 +49,18 @@ const ProductDetails = () => {
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Provider</td>
-                                        <td className="py-2 px-4 border-b">Provider Name</td>
+                                        <td className="py-2 px-4 border-b">{userName}</td>
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Address</td>
                                         <td className="py-2 px-4 border-b flex items-center">
                                             <MapPinIcon className="h-5 w-5 text-gray-600 mr-1" />
-                                            Dhaka, Bangladesh
+                                            {road}, {thana}, {zila}
                                         </td>
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Phone</td>
-                                        <td className="py-2 px-4 border-b">01322565368</td>
+                                        <td className="py-2 px-4 border-b">{phone}</td>
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Reviews</td>
@@ -78,7 +78,7 @@ const ProductDetails = () => {
                                         <td className="py-2 px-4 border-b">
                                             <input
                                                 type="number"
-                                                defaultValue={1}
+                                                defaultValue={rentalDay}
                                                 className="border border-gray-300 rounded-lg px-2 py-1 w-20"
                                                 min="1"
                                                 max="30"
