@@ -8,7 +8,7 @@ const Manageitems = () => {
 
     // Fetch products data from backend
     useEffect(() => {
-        fetch('https://bhara-project-server.vercel.app/products') // Update with your API endpoint
+        fetch('https://bhara-project-server.onrender.com/products') // Update with your API endpoint
             .then(response => response.json())
             .then(data => {
                 // Filter products to only show those added by the logged-in user
@@ -21,7 +21,7 @@ const Manageitems = () => {
     // Handle delete product
     const handleDelete = (productId) => {
         if (window.confirm('Are you sure you want to delete this product?')) {
-            fetch(`https://bhara-project-server.vercel.app/products/${productId}`, {
+            fetch(`https://bhara-project-server.onrender.com/products/${productId}`, {
                 method: 'DELETE',
             })
             .then(response => response.json())

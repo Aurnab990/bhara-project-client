@@ -32,7 +32,7 @@ const SignUp = () => {
                         district:"",
                         verification:""
                     };
-                    return fetch('https://bhara-project-server.vercel.app/users',{
+                    return fetch('https://bhara-project-server.onrender.com/users',{
                         method: "POST",
                         headers:{
                             "Content-type": "application/json"
