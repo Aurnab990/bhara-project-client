@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home></Home>,
-                loader:()=>fetch('http://localhost:3000/products')
+                loader:()=>fetch('https://bhara-project-server.vercel.app/products')
             },
             {
                 path:"/product/details/:id",
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
                         <Detailspage></Detailspage>
                     </Private>
                 ),
-                loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`)
+                loader:({params})=>fetch(`https://bhara-project-server.vercel.app/products/${params.id}`)
             }
         ]
     },
@@ -77,7 +77,7 @@ export const router = createBrowserRouter([
                 <Updateuser></Updateuser>
             </Private>
         ),
-        loader:({params})=>fetch(`http://localhost:3000/users/${params.id}`)
+        loader:({params})=>fetch(`https://bhara-project-server.vercel.app/users/${params.id}`)
 
     },
     {

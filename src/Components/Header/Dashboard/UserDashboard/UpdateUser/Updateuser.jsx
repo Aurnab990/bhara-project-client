@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Usersidebar from '../../UserSIdeBar/Usersidebar';
 import useAuth from '../../../../../Hooks/useAuth';
 import { useParams } from 'react-router-dom';
+import Usersidebar from '../../UserSIdeBar/userSidebar';
 
 const UpdateUser = () => {
     const {user} = useAuth();
@@ -22,7 +22,7 @@ const UpdateUser = () => {
         const district = form.district.value;
 
         const userData = {name,email,phone,title,thana,zila,district}
-        fetch(`http://localhost:3000/users/${id}`, {
+        fetch(`https://bhara-project-server.vercel.app/users/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ const Userprofile = () => {
 
     useEffect(() => {
         if (email) {
-            fetch('http://localhost:3000/users')
+            fetch('https://bhara-project-server.vercel.app/users')
                 .then(res => res.json())
                 .then(data => {
                     const filteredUser = data?.filter(currentUser => currentUser.email === email);

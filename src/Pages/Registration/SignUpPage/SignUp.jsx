@@ -32,7 +32,7 @@ const SignUp = () => {
                         district:"",
                         verification:""
                     };
-                    return fetch('http://localhost:3000/users',{
+                    return fetch('https://bhara-project-server.vercel.app/users',{
                         method: "POST",
                         headers:{
                             "Content-type": "application/json"

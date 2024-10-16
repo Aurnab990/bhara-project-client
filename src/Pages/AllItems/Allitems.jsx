@@ -4,6 +4,7 @@ import Singleitem from '../SingleProduct/Singleitem';
 
 const Allitems = ({items}) => {
     const {name,image,price,category,reviews,description} = items;
+    console.log(items);
     return (
         <div className="md:col-span-3 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
             {

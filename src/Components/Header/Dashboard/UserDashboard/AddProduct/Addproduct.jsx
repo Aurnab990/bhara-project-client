@@ -10,7 +10,7 @@ const AddProduct = () => {
     useEffect(() => {
         const userEmail = user?.email; // Get logged-in user's email
         if (userEmail) {
-            fetch(`http://localhost:3000/users?email=${userEmail}`) // Pass email as query param
+            fetch(`https://bhara-project-server.vercel.app/users?email=${userEmail}`) // Pass email as query param
                 .then(res => res.json())
                 .then(data => {
                     if (data) {
@@ -41,7 +41,7 @@ const AddProduct = () => {
 
         const item = {userName,userEmail,productName,price,category,rentalDay,phone,road,thana,zila,district,description,image}
 
-        fetch('http://localhost:3000/products', {
+        fetch('https://bhara-project-server.vercel.app/products', {
             method: 'POST',
             headers:{
                 'Content-type':'application/json'
