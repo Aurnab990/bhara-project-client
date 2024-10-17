@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPinIcon, CheckCircleIcon } from '@heroicons/react/24/solid'; // Icons for location and verification
 import Navbar from '../../Layouts/Navbar/Navbar';
 import Footer from '../../Layouts/Footer/Footer';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const ProductDetails = () => {
     const { _id,productName, image, price, category, description, road,thana,zila,rentalDay,phone, userName } = useLoaderData();
@@ -88,10 +88,12 @@ const ProductDetails = () => {
                                 </tbody>
                             </table>
                         </div>
-
+                        
+                        <Link to={`/product/details/${_id}/order=page`}>
                         <button className="mt-6 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
-                            RENT NOW
+                            PLACE A ORDER
                         </button>
+                        </Link>
                     </div>
                 </div>
 

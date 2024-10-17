@@ -11,6 +11,7 @@ import Detailspage from "../DetailsPage/Detailspage.jsx";
 import Updateuser from "../../Components/Header/Dashboard/UserDashboard/UpdateUser/Updateuser.jsx";
 import Addproduct from "../../Components/Header/Dashboard/UserDashboard/AddProduct/Addproduct.jsx";
 import Manageitems from "../../Components/Header/Dashboard/UserDashboard/ManageItems/Manageitems.jsx";
+import Orderpage from "../OrderPage/Orderpage.jsx";
 
 
 export const router = createBrowserRouter([
@@ -29,6 +30,17 @@ export const router = createBrowserRouter([
                 loader:({params})=>fetch(`https://bhara-project-server.onrender.com/products/${params.id}`)
             }
         ]
+    },
+    {
+        path: "/product/details/:id/order=page",
+        element:(
+            <Private>
+                <Orderpage></Orderpage>
+                
+            </Private>
+        ),
+        loader:({params})=>fetch(`https://bhara-project-server.onrender.com/products/${params.id}`)
+
     },
     {
         path: "/user/dashboard",

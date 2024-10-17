@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Usersidebar from '../../UserSIdeBar/userSidebar';
 import useAuth from '../../../../../Hooks/useAuth';
 import { toast, ToastContainer} from 'react-toastify';
+import Usersidebar from '../../UserSIdeBar/Usersidebar';
 
 const AddProduct = () => {
     const {user} = useAuth();
