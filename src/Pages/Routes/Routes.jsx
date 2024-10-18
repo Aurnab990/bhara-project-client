@@ -12,6 +12,8 @@ import Updateuser from "../../Components/Header/Dashboard/UserDashboard/UpdateUs
 import Addproduct from "../../Components/Header/Dashboard/UserDashboard/AddProduct/Addproduct.jsx";
 import Manageitems from "../../Components/Header/Dashboard/UserDashboard/ManageItems/Manageitems.jsx";
 import Orderpage from "../OrderPage/Orderpage.jsx";
+import Manageorder from "../../Components/Header/Dashboard/UserDashboard/ManageOrders/Manageorder.jsx";
+import Myorders from "../../Components/Header/Dashboard/UserDashboard/MyOrders/Myorders.jsx";
 
 
 export const router = createBrowserRouter([
@@ -74,6 +76,24 @@ export const router = createBrowserRouter([
         element:(
             <Private>
                 <Manageitems></Manageitems>
+            </Private>
+        )
+
+    },
+    {
+        path: "/user/my-orders",
+        element: (
+            <Private>
+                <Myorders></Myorders>
+            </Private>
+        )
+
+    },
+    {
+        path: "/user/orders-manage",
+        element: (
+            <Private>
+                <Manageorder></Manageorder>
             </Private>
         )
 

@@ -29,6 +29,7 @@ const Orderpage = () => {
 
         const orderData = {
             _id,
+            productName,
             price,
             status: "pending",
             rentalDay,
