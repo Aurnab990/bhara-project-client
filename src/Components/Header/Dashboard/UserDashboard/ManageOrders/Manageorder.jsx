@@ -8,7 +8,7 @@ const Manageorder = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:3000/orders/provider/${user.email}`)
+            fetch(`https://bhara-project-server.onrender.com/orders/provider/${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setOrders(data);
@@ -21,7 +21,7 @@ const Manageorder = () => {
 
     // Function to handle accept order
     const handleAccept = (orderId) => {
-        fetch(`http://localhost:3000/orders/${orderId}`, {
+        fetch(`https://bhara-project-server.onrender.com/orders/${orderId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const Manageorder = () => {
         .then(res => res.json())
         .then(() => {
             setOrders(orders.map(order =>
-                order._id === orderId ? { ...order, status: 'accepted' } : order
+                order._id === orderId ? { ...order, status: 'accepted',acceptedAt: new Date() } : order
             ));
         })
         .catch(err => console.error('Failed to accept order', err));
@@ -39,7 +39,7 @@ const Manageorder = () => {
     
     // Function to handle decline order
     const handleDecline = (orderId) => {
-        fetch(`http://localhost:3000/orders/${orderId}`, {
+        fetch(`https://bhara-project-server.onrender.com/orders/${orderId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

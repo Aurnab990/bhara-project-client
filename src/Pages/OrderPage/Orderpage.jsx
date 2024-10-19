@@ -28,7 +28,7 @@ const Orderpage = () => {
         const orderPhone = form.orderPhone.value;
 
         const orderData = {
-            _id,
+            
             productName,
             price,
             status: "pending",
@@ -42,7 +42,7 @@ const Orderpage = () => {
             providerEmail
         };
 
-        fetch(`http://localhost:3000/orders`, {
+        fetch(`https://bhara-project-server.onrender.com/orders`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

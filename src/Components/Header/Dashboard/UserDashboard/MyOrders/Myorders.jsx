@@ -10,7 +10,7 @@ const MyOrders = () => {
     useEffect(() => {
         // Fetch orders only if the user is logged in
         if (user?.email) {
-            fetch(`http://localhost:3000/orders/user/${user.email}`) // Fetch orders for the specific user
+            fetch(`https://bhara-project-server.onrender.com/orders/user/${user.email}`) // Fetch orders for the specific user
                 .then(res => {
                     if (!res.ok) {
                         throw new Error('Failed to fetch orders'); // Handle HTTP errors
@@ -52,18 +52,19 @@ const MyOrders = () => {
                                     <p className="text-gray-600"><strong>Rental Days:</strong> {order.rentalDay}</p>
                                 </div>
 
-                                {/* Client Info */}
-                                <div className="mb-4">
-                                    <p className="text-gray-600"><strong>Client Email:</strong> {order.orderEmail}</p>
-                                    <p className="text-gray-600"><strong>Phone:</strong> {order.orderPhone}</p>
-                                </div>
 
                                 {/* Order Status */}
-                                <div className="mb-4">
-                                    <p className={`text-lg font-semibold ${order.status === 'pending' ? 'text-yellow-500' : order.status === 'accepted' ? 'text-green-500' : 'text-red-500'}`}>
+                                <div className="mb-4 flex">
+                                    <p className={`text-lg font-semibold ${order.status === 'pending' ? 'text-red-500' : order.status === 'accepted' ? 'text-green-500' : 'text-red-500'}`}>
                                         {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                                        {order.status === 'accepted' && order.acceptedAt && (
+                                        <p className="text-green-500">
+                                            {new Date(order.acceptedAt).toLocaleString()}
+                                        </p>
+                                    )}
                                     </p>
                                 </div>
+                                
                             </div>
                         ))}
                     </div>

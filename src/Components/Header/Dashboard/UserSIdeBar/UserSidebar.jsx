@@ -49,7 +49,7 @@ const Usersidebar = () => {
                     <li className="flex items-center hover:bg-gray-700 p-2 rounded-lg">
                         <HomeIcon className="h-6 w-6 mr-3" />
                         <Link to={'/user/dashboard'} className="block">
-                            Home
+                            Dashboard
                         </Link>
                     </li>
                     <li className="flex items-center hover:bg-gray-700 p-2 rounded-lg">
@@ -93,6 +93,12 @@ const Usersidebar = () => {
                         <a href="#notifications" className="block">
                             Notifications
                         </a>
+                    </li>
+                    <li className="flex items-center hover:bg-gray-700 p-2 rounded-lg">
+                        <HomeIcon className="h-6 w-6 mr-3" />
+                        <Link to={'/'} className="block">
+                            Home
+                        </Link>
                     </li>
                     <li className="flex items-center hover:bg-gray-700 p-2 rounded-lg">
                         <ArrowRightOnRectangleIcon className="h-6 w-6 mr-3" />
