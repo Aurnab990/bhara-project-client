@@ -10,6 +10,7 @@ const Orderpage = () => {
 
     const [price, setPrice] = useState(defaultPrice);
     const [rentalDay, setRentalDay] = useState(defaultRentalDay);
+    const [rentalDate, setRentalDate] = useState('');
 
     // Check if the logged-in user is the provider of the product
     const isProvider = orderEmail === providerEmail;
@@ -28,11 +29,11 @@ const Orderpage = () => {
         const orderPhone = form.orderPhone.value;
 
         const orderData = {
-            
             productName,
             price,
             status: "pending",
             rentalDay,
+            rentalDate,  // Added rental date to order data
             orderRoad,
             orderThana,
             orderZila,
@@ -162,6 +163,19 @@ const Orderpage = () => {
                             disabled={isProvider}
                         />
                     </div>
+                </div>
+
+                {/* Rent Start Date */}
+                <div>
+                    <label className="block text-gray-700 font-bold mb-2">Rental Start Date</label>
+                    <input
+                        type="date"
+                        value={rentalDate}
+                        onChange={(e) => setRentalDate(e.target.value)}
+                        className="w-full p-2 border rounded"
+                        required
+                        disabled={isProvider}
+                    />
                 </div>
 
                 {/* Provider Phone */}

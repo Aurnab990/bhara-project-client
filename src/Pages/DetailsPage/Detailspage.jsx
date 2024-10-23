@@ -45,7 +45,7 @@ const ProductDetails = () => {
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Discount</td>
-                                        <td className="py-2 px-4 border-b">20%</td>
+                                        <td className="py-2 px-4 border-b bg-green-400 text-white font-semibold">Negotiable</td>
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Provider</td>
