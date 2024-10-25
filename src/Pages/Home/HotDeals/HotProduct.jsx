@@ -11,7 +11,7 @@ const hotProducts = [
 const HotProduct = () => {
     return (
         <div className="p-8">
-            <h2 className="text-2xl font-semibold text-center mb-6">Hot Products</h2>
+            <h2 className="text-3xl font-extrabold text-center mb-10 text-gray-800 font-poppins tracking-wide">Hot Products</h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-5">
                 {hotProducts.map((product, index) => (
                     <div 

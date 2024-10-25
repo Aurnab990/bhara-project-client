@@ -33,7 +33,7 @@ const Orderpage = () => {
             price,
             status: "pending",
             rentalDay,
-            rentalDate,  // Added rental date to order data
+            rentalDate,  
             orderRoad,
             orderThana,
             orderZila,

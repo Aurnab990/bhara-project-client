@@ -6,6 +6,8 @@ import Usersidebar from '../../UserSIdeBar/Usersidebar';
 const AddProduct = () => {
     const {user} = useAuth();
     const [userName, setUserName] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const imageUploadAPI = import.meta.env.VITE_IMAGE_APP_API;
 
     useEffect(() => {
         const userEmail = user?.email; // Get logged-in user's email
@@ -21,8 +23,27 @@ const AddProduct = () => {
         }
     }, [user]);
 
+    // Handle image upload
+    const handleImageUpload = async (imageFile) => {
+        const formData = new FormData();
+        formData.append('image', imageFile);
+
+        try {
+            const response = await fetch(`https://api.imgbb.com/1/upload?key=${imageUploadAPI}`, {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            return data.data.url; // Return the image URL
+        } catch (error) {
+            console.error('Image upload failed:', error);
+            toast.error('Image upload failed');
+            return null;
+        }
+    };
+
     // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const form = e.target;
         const userEmail = user?.email;
@@ -36,10 +57,29 @@ const AddProduct = () => {
         const zila = form.zila.value;
         const district = form.district.value;
         const description = form.description.value;
-        const image = form.productImage.value;
+        const imageFile = form.productImage.files[0];
         // console.log(usersName)
 
-        const item = {userName,userEmail,productName,price,category,rentalDay,phone,road,thana,zila,district,description,image}
+        // Upload image and get URL
+        const uploadedImageUrl = await handleImageUpload(imageFile);
+        if (!uploadedImageUrl) return; //Stop here
+
+        // Prepare item data with uploaded image URL
+        const item = {
+            userName,
+            userEmail,
+            productName,
+            price,
+            category,
+            rentalDay,
+            phone,
+            road,
+            thana,
+            zila,
+            district,
+            description,
+            image: uploadedImageUrl // Store the image URL
+        };
 
         fetch('https://bhara-project-server.onrender.com/products', {
             method: 'POST',
@@ -50,7 +90,7 @@ const AddProduct = () => {
         })
         .then(response => response.json())
         .then(data => {
-            toast.success("New Product Added For Rent");
+            toast.success(`New Product Added For Rent`);
         })
         .catch(error => {
             toast.error('Failed to add. Please try again.');
@@ -134,6 +174,7 @@ const AddProduct = () => {
                                 <option value="motorbike">Motorbike</option>
                                 <option value="book">Book</option>
                                 <option value="car">Car</option>
+                                <option value="camera">Camera</option>
                                 <option value="laptop">Laptop</option>
                                 <option value="calculator">Calculator</option>
                             </select>
@@ -205,14 +246,15 @@ const AddProduct = () => {
 
                         {/* Product Image */}
                         <div className="col-span-1">
-                            <label className="block text-black-600 font-medium mb-2">Product Image</label>
-                            <input
-                                name="productImage"
-                                type="link"
-                                accept="image/*"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
-                        </div>
+                        <label className="block text-black-600 font-medium mb-2">Product Image</label>
+                        <input
+                            name="productImage"
+                            type="file"
+                            accept="image/*"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required
+                        />
+                    </div>
                     </div>
 
                     {/* Submit Button */}
