@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Singleitem = ({ item }) => {
-    const { _id, productName, image, price, category, road, thana, zila, rentalDay, userName } = item;
+    const { _id, productName, images, price, category, road, thana, zila, rentalDay, userName } = item;
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const Singleitem = ({ item }) => {
         <div className="p-4 bg-white border border-gray-300 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
             <div className="overflow-hidden mb-4 rounded-md h-32">
                 <img
-                    src={image}
+                    src={images}
                     alt={productName}
                     className="object-cover w-full h-full"
                 />
@@ -32,9 +32,9 @@ const Singleitem = ({ item }) => {
                 <MapPinIcon className="h-5 w-5 text-gray-600 mr-2" />
                 <span className="text-gray-600">{road}, {thana}, {zila}</span>
             </div>
-            <p className="mb-4 text-gray-700">
+            {/* <p className="mb-4 text-gray-700">
                 <span className="font-semibold">Provider:</span> {userName}
-            </p>
+            </p> */}
             <Link to={`/product/details/${_id}`}>
             <button className="w-full py-2 bg-gradient-to-r from-blue-600 to-blue-900 text-white font-bold rounded-lg hover:bg-blue-700 transition-all duration-300">
                     RENT NOW

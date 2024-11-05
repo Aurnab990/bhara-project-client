@@ -27,7 +27,7 @@ const Allitems = ({ items }) => {
     return (
         <div className="mt-8 bg-gradient-to-b from-gray-50 to-gray-200 min-h-screen px-4 py-8">
             <h1 className="text-3xl font-extrabold text-center mb-10 text-gray-800 font-poppins tracking-wide">
-                Explore Premium Products
+                Explore Products
             </h1>
 
             {/* Search Fields */}

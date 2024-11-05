@@ -1,23 +1,43 @@
-import React from 'react';
-import { MapPinIcon, CheckCircleIcon } from '@heroicons/react/24/solid'; // Icons for location and verification
-import Navbar from '../../Layouts/Navbar/Navbar';
-import Footer from '../../Layouts/Footer/Footer';
+import React, { useState } from 'react';
+import { MapPinIcon, CheckCircleIcon } from '@heroicons/react/24/solid';
 import { Link, useLoaderData } from 'react-router-dom';
+import Footer from '../../Layouts/Footer/Footer';
 
 const ProductDetails = () => {
-    const { _id,productName, image, price, category, description, road,thana,zila,rentalDay,phone, userName } = useLoaderData();
+    const { _id, productName, images, price, category, description, road, thana, zila, rentalDay, phone, userName } = useLoaderData();
+    const [mainImage, setMainImage] = useState(images[0]); // Set the first image as the main image initially
+
+    const handleImageClick = (image) => {
+        setMainImage(image);
+    };
+
     return (
         <div>
-
             <div className="bg-gray-100 p-4">
                 <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row max-w-full mx-auto">
                     {/* Image Section */}
                     <div className="flex-shrink-0 w-full md:w-1/2 mb-4 lg:mt-12 md:mb-0">
+                        {/* Main Large Image */}
                         <img 
-                            src={image} 
+                            src={mainImage} 
                             alt="Product" 
                             className="w-full h-auto rounded-lg object-cover" 
                         />
+
+                        {/* Thumbnails */}
+                        <div className="flex space-x-2 mt-4">
+                            {images.map((image, index) => (
+                                <img
+                                    key={index}
+                                    src={image}
+                                    alt={`Thumbnail ${index + 1}`}
+                                    onClick={() => handleImageClick(image)}
+                                    className={`w-20 h-20 rounded-lg cursor-pointer ${
+                                        mainImage === image ? 'border-2 border-blue-500' : ''
+                                    }`}
+                                />
+                            ))}
+                        </div>
                     </div>
                     
                     {/* Details Section */}
@@ -101,7 +121,7 @@ const ProductDetails = () => {
                 <div className="bg-white rounded shadow-lg p-3 mt-6 w-full">
                     <h2 className="text-xl font-semibold mb-2">Description</h2>
                     <p className="text-gray-600">
-                    {description}
+                        {description}
                     </p>
                 </div>
             </div>

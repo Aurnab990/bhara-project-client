@@ -1,34 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../Layouts/Navbar/Navbar.css';
 import logo from '../../assets/logo.jpg';
 import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
+import Bharaanimation from '../LogoAnimation/Bharaanimation';
 
 const Navbar = () => {
-    const {user}= useAuth();
+    const { user } = useAuth();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showNavbar, setShowNavbar] = useState(true);
-    const [lastScrollTop, setLastScrollTop] = useState(0);
+    const lastScrollTop = useRef(0);
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop) {
-                // Scrolling down
-                setShowNavbar(false);
-            } else {
-                // Scrolling up
-                setShowNavbar(true);
-            }
-            setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop);
+            setShowNavbar(scrollTop < lastScrollTop.current);
+            lastScrollTop.current = scrollTop <= 0 ? 0 : scrollTop;
         };
-
         window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [lastScrollTop]);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <div className={`sticky top-0 z-50 transition-transform duration-300 ${showNavbar ? 'transform translate-y-0' : 'transform -translate-y-full'}`}>
@@ -48,15 +39,7 @@ const Navbar = () => {
                             />
                             <span className="ml-2 text-xl font-bold tracking-wide uppercase">
                                 {/* Animating each letter */}
-                                <span className="text-red-500 animated-letter">B</span>
-                                <span className="text-green-500 animated-letter">H</span>
-                                <span className="text-yellow-700 animated-letter">A</span>
-                                <span className="text-violet-900 animated-letter">R</span>
-                                <span className="text-black animated-letter">A</span>
-                                <span className="text-red-500 animated-letter">.</span>
-                                <span className="text-green-800 animated-letter">C</span>
-                                <span className="text-blue-600 animated-letter">O</span>
-                                <span className="text-sky-900 animated-letter">M</span>
+                                <Bharaanimation></Bharaanimation>
                             </span>
                         </a>
                         <ul className="flex items-center hidden space-x-8 lg:flex">
@@ -70,7 +53,7 @@ const Navbar = () => {
                                     Home
                                 </Link>
                             </li>
-                            
+
                             <li>
                                 <a
                                     href="/"
@@ -91,34 +74,34 @@ const Navbar = () => {
                                     Help & Support
                                 </Link>
                             </li>
-                           
+
                             {
-                                user?
-                                <Link to={"/user/dashboard"}>
-                            <li>
-                                <a
-                                   
-                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                    aria-label="Sign up"
-                                    title="Sign up"
-                                >
-                                    Dashboard
-                                </a>
-                            </li>
-                            </Link>
-                            :
-                            <Link to={"/sign-in"}>
-                            <li>
-                                <a
-                                    
-                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                    aria-label="Sign up"
-                                    title="Sign up"
-                                >
-                                    Give Rent
-                                </a>
-                            </li>
-                            </Link>
+                                user ?
+                                    <Link to={"/user/dashboard"}>
+                                        <li>
+                                            <a
+
+                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                aria-label="Sign up"
+                                                title="Sign up"
+                                            >
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                    </Link>
+                                    :
+                                    <Link to={"/sign-in"}>
+                                        <li>
+                                            <a
+
+                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                aria-label="Sign up"
+                                                title="Sign up"
+                                            >
+                                                Give Rent
+                                            </a>
+                                        </li>
+                                    </Link>
                             }
                         </ul>
                         <div className="lg:hidden">
@@ -161,15 +144,7 @@ const Navbar = () => {
                                                     />
                                                     <span className="ml-2 text-xl font-bold tracking-wide uppercase">
                                                         {/* Animating each letter */}
-                                                        <span className="text-red-500 animated-letter">B</span>
-                                                        <span className="text-green-500 animated-letter">H</span>
-                                                        <span className="text-yellow-700 animated-letter">A</span>
-                                                        <span className="text-violet-900 animated-letter">R</span>
-                                                        <span className="text-black animated-letter">A</span>
-                                                        <span className="text-red-500 animated-letter">.</span>
-                                                        <span className="text-green-800 animated-letter">C</span>
-                                                        <span className="text-blue-600 animated-letter">O</span>
-                                                        <span className="text-sky-900 animated-letter">M</span>
+                                                        <Bharaanimation></Bharaanimation>
                                                     </span>
                                                 </a>
                                             </div>
@@ -231,34 +206,34 @@ const Navbar = () => {
                                                         Contact
                                                     </a>
                                                 </li>
-                                                
+
                                                 {
-                                                    user?
-                                                    <Link to={"/user/dashboard"}>
-                                                <li>
-                                                    <a
-                                                        
-                                                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                        aria-label="Sign up"
-                                                        title="Sign up"
-                                                    >
-                                                        Dashboard
-                                                    </a>
-                                                </li>
-                                                </Link>
-                                                :
-                                                <Link to={"/sign-in"}>
-                                                <li>
-                                                    <a
-                                                        
-                                                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                        aria-label="Sign up"
-                                                        title="Sign up"
-                                                    >
-                                                        Give Rent
-                                                    </a>
-                                                </li>
-                                                </Link>
+                                                    user ?
+                                                        <Link to={"/user/dashboard"}>
+                                                            <li>
+                                                                <a
+
+                                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                                    aria-label="Sign up"
+                                                                    title="Sign up"
+                                                                >
+                                                                    Dashboard
+                                                                </a>
+                                                            </li>
+                                                        </Link>
+                                                        :
+                                                        <Link to={"/sign-in"}>
+                                                            <li>
+                                                                <a
+
+                                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                                    aria-label="Sign up"
+                                                                    title="Sign up"
+                                                                >
+                                                                    Give Rent
+                                                                </a>
+                                                            </li>
+                                                        </Link>
                                                 }
                                             </ul>
                                         </nav>

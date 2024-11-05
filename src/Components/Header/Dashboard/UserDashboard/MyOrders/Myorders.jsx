@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../../Hooks/useAuth';
-import Usersidebar from '../../UserSIdeBar/userSidebar';
+import Usersidebar from '../../UserSIdeBar/Usersidebar';
+
 
 const MyOrders = () => {
     const { user } = useAuth(); // Get the logged-in user

@@ -1,30 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../../Hooks/useAuth';
-import { toast, ToastContainer} from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import Usersidebar from '../../UserSIdeBar/Usersidebar';
 
 const AddProduct = () => {
-    const {user} = useAuth();
+    const { user } = useAuth();
     const [userName, setUserName] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
+    const [imageUrls, setImageUrls] = useState([]);
     const imageUploadAPI = import.meta.env.VITE_IMAGE_APP_API;
 
+    const option = [
+        <option value="">Select category</option>,
+        <option value="bicycle">Bicycle</option>,
+        <option value="motorbike">Motorbike</option>,
+        <option value="book">Book</option>,
+        <option value="car">Car</option>,
+        <option value="camera">Camera</option>,
+        <option value="laptop">Laptop</option>,
+        <option value="calculator">Calculator</option>
+    ];
+
     useEffect(() => {
-        const userEmail = user?.email; // Get logged-in user's email
+        const userEmail = user?.email;
         if (userEmail) {
-            fetch(`https://bhara-project-server.onrender.com/users?email=${userEmail}`) // Pass email as query param
+            fetch(`https://bhara-project-server.onrender.com/users?email=${userEmail}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data) {
-                        setUserName(data.name); // Set the user's name
+                        setUserName(data.name);
                     }
                 })
                 .catch(error => console.error('Error fetching user data:', error));
         }
     }, [user]);
 
-    // Handle image upload
-    const handleImageUpload = async (imageFile) => {
+    const handleImageUpload = async (e) => {
+        const imageFile = e.target.files[0];
+        if (!imageFile) return;
+
         const formData = new FormData();
         formData.append('image', imageFile);
 
@@ -34,16 +47,23 @@ const AddProduct = () => {
                 body: formData
             });
             const data = await response.json();
-            return data.data.url; // Return the image URL
+            if (data && data.data.url) {
+                setImageUrls((prev) => [...prev, data.data.url]);
+                // toast.success('Image uploaded successfully');
+            } else {
+                console.log('Failed to upload image');
+            }
         } catch (error) {
             console.error('Image upload failed:', error);
-            toast.error('Image upload failed');
-            return null;
+            // toast.error('Image upload failed');
         }
+
+        // Clear the input field
+        e.target.value = '';
     };
 
-    // Handle form submission
-    const handleSubmit = async(e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
         const userEmail = user?.email;
@@ -57,14 +77,8 @@ const AddProduct = () => {
         const zila = form.zila.value;
         const district = form.district.value;
         const description = form.description.value;
-        const imageFile = form.productImage.files[0];
-        // console.log(usersName)
+       
 
-        // Upload image and get URL
-        const uploadedImageUrl = await handleImageUpload(imageFile);
-        if (!uploadedImageUrl) return; //Stop here
-
-        // Prepare item data with uploaded image URL
         const item = {
             userName,
             userEmail,
@@ -78,24 +92,28 @@ const AddProduct = () => {
             zila,
             district,
             description,
-            image: uploadedImageUrl // Store the image URL
+            images: imageUrls // Array of image URLs
         };
 
         fetch('https://bhara-project-server.onrender.com/products', {
             method: 'POST',
-            headers:{
-                'Content-type':'application/json'
+            headers: {
+                'Content-type': 'application/json'
             },
             body: JSON.stringify(item)
         })
-        .then(response => response.json())
-        .then(data => {
-            toast.success(`New Product Added For Rent`);
-        })
-        .catch(error => {
-            toast.error('Failed to add. Please try again.');
-        });
+            .then(response => response.json())
+            .then(data => {
+                toast.success(`New Product Added For Rent`);
+                
+            })
+            .catch(error => {
+                toast.error('Failed to add. Please try again.');
+            });
+
+            e.target.value = '';
     };
+
 
     return (
         <div className="min-h-screen flex flex-col lg:flex-row font-poppins">
@@ -169,21 +187,15 @@ const AddProduct = () => {
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 required
                             >
-                                <option value="">Select category</option>
-                                <option value="bicycle">Bicycle</option>
-                                <option value="motorbike">Motorbike</option>
-                                <option value="book">Book</option>
-                                <option value="car">Car</option>
-                                <option value="camera">Camera</option>
-                                <option value="laptop">Laptop</option>
-                                <option value="calculator">Calculator</option>
+                                {option}
+
                             </select>
                         </div>
                     </div>
 
                     {/* Third Row */}
                     <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-4">
-                    <div className="col-span-1">
+                        <div className="col-span-1">
                             <label className="block text-black-600 font-medium mb-2">Road</label>
                             <input
                                 name="road"
@@ -245,16 +257,25 @@ const AddProduct = () => {
                         </div>
 
                         {/* Product Image */}
-                        <div className="col-span-1">
-                        <label className="block text-black-600 font-medium mb-2">Product Image</label>
-                        <input
-                            name="productImage"
-                            type="file"
-                            accept="image/*"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                        />
-                    </div>
+                        <div className="mb-4">
+                    <label className="block text-black-600 font-medium mb-2">Upload Product Images</label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
+
+                {/* Display Uploaded Images */}
+                <div className="mb-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {imageUrls.map((url, index) => (
+                        <div key={index} className="relative">
+                            <img src={url} alt={`Uploaded ${index + 1}`} className="w-full h-32 object-cover rounded-lg" />
+                        </div>
+                    ))}
+                </div>
+
                     </div>
 
                     {/* Submit Button */}

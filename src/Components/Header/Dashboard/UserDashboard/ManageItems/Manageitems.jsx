@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Usersidebar from '../../UserSIdeBar/userSidebar';
+import Usersidebar from '../../UserSIdeBar/Usersidebar';
 import useAuth from '../../../../../Hooks/useAuth';
+
 
 const Manageitems = () => {
     const { user } = useAuth(); // Get the logged-in user's info
@@ -66,9 +67,9 @@ const Manageitems = () => {
                                     {/* Product Image */}
                                     <td className="px-4 py-2 border">
                                         <img
-                                            src={product.image} // Assuming the backend provides an image URL
+                                            src={product.images[0]} // Assuming the backend provides an image URL
                                             alt={product.productName}
-                                            className="w-12 h-12 rounded-full object-cover mx-auto"
+                                            className="w-16 h-16 rounded-full object-cover mx-auto"
                                         />
                                     </td>
 
