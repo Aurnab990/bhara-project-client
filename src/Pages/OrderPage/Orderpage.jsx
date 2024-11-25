@@ -10,7 +10,8 @@ const Orderpage = () => {
 
     const [price, setPrice] = useState(defaultPrice);
     const [rentalDay, setRentalDay] = useState(defaultRentalDay);
-    const [rentalDate, setRentalDate] = useState('');
+    const [rentalStartDate, setRentalStartDate] = useState('');
+    const [rentalEndDate, setRentalEndDate] = useState('');
 
     // Check if the logged-in user is the provider of the product
     const isProvider = orderEmail === providerEmail;
@@ -33,7 +34,8 @@ const Orderpage = () => {
             price,
             status: "pending",
             rentalDay,
-            rentalDate,  
+            rentalStartDate, 
+            rentalEndDate, 
             orderRoad,
             orderThana,
             orderZila,
@@ -165,22 +167,36 @@ const Orderpage = () => {
                     </div>
                 </div>
 
-                {/* Rent Start Date */}
+                <div className="grid lg:grid-cols-2 gap-3">
+                    {/* Rent Start Date */}
                 <div>
                     <label className="block text-gray-700 font-bold mb-2">Rental Start Date</label>
                     <input
                         type="date"
-                        value={rentalDate}
-                        onChange={(e) => setRentalDate(e.target.value)}
+                        value={rentalStartDate}
+                        onChange={(e) => setRentalStartDate(e.target.value)}
                         className="w-full p-2 border rounded"
                         required
                         disabled={isProvider}
                     />
                 </div>
 
+                {/* Rent End Date */}
+                <div>
+                    <label className="block text-gray-700 font-bold mb-2">Rental Start Date</label>
+                    <input
+                        type="date"
+                        value={rentalEndDate}
+                        onChange={(e) => setRentalEndDate(e.target.value)}
+                        className="w-full p-2 border rounded"
+                        disabled={isProvider}
+                    />
+                </div>
+                </div>
+
                 {/* Provider Phone */}
                 <div>
-                    <label className="block text-gray-700 font-bold mb-2">Your Phone</label>
+                    <label className="block text-gray-700 font-bold mb-2">Your Active Phone</label>
                     <input
                         name="orderPhone"
                         type="text"

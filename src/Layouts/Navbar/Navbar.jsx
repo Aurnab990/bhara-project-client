@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../Layouts/Navbar/Navbar.css';
 import logo from '../../assets/logo.jpg';
+import blankAvatar from '../../assets/avator-img.jpg';
 import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import Bharaanimation from '../LogoAnimation/Bharaanimation';
@@ -26,84 +27,83 @@ const Navbar = () => {
             <div className="bg-white border-2">
                 <div className="px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                     <div className="relative flex items-center justify-between">
+                        {/* Logo */}
                         <a
                             href="/"
                             aria-label="bhara.com"
                             title="bhara.com"
                             className="inline-flex items-center"
                         >
-                            <img
-                                src={logo}
-                                alt="bhara.com logo"
-                                className="w-34 h-12"
-                            />
+                            <img src={logo} alt="bhara.com logo" className="w-34 h-12" />
                             <span className="ml-2 text-xl font-bold tracking-wide uppercase">
-                                {/* Animating each letter */}
-                                <Bharaanimation></Bharaanimation>
+                                <Bharaanimation />
                             </span>
                         </a>
+
+                        {/* Navbar Links */}
                         <ul className="flex items-center hidden space-x-8 lg:flex">
-                            <li>
-                                <Link
-                                    to={"/"}
-                                    aria-label="Our product"
-                                    title="Our product"
-                                    className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
-                                >
-                                    Home
-                                </Link>
-                            </li>
+    <li>
+        <Link
+            to={"/"}
+            aria-label="Our product"
+            title="Our product"
+            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
+        >
+            Home
+        </Link>
+    </li>
 
-                            <li>
-                                <a
-                                    href="/"
-                                    aria-label="Product pricing"
-                                    title="Product pricing"
-                                    className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
-                                >
-                                    Premium
-                                </a>
-                            </li>
-                            <li>
-                                <Link
-                                    to={"/support"}
-                                    aria-label="Product pricing"
-                                    title="Product pricing"
-                                    className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
-                                >
-                                    Help & Support
-                                </Link>
-                            </li>
+    <li>
+        <Link
+            to={"/premium-member"}
+            aria-label="Product pricing"
+            title="Product pricing"
+            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
+        >
+            Premium
+        </Link>
+    </li>
+    <li>
+        <Link
+            to={"/support"}
+            aria-label="Product pricing"
+            title="Product pricing"
+            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
+        >
+            Help & Support
+        </Link>
+    </li>
 
-                            {
-                                user ?
-                                    <Link to={"/user/dashboard"}>
-                                        <li>
-                                            <a
+    {
+        user ? (
+            <Link to={"/user/dashboard"} className="relative flex items-center space-x-4">
+                <img
+                    src={user?.photoURL || blankAvatar}
+                    alt="User"
+                    className="w-10 h-10 rounded-full border-2 border-gray-300"
+                    title="User Profile"
+                />
+            </Link>
+        ) : (
+            <Link to={"/sign-in"}>
+                <li>
+                    <a
+                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                        aria-label="Sign up"
+                        title="Sign up"
+                    >
+                        Give Rent
+                    </a>
+                </li>
+            </Link>
+        )
+    }
+</ul>
 
-                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                aria-label="Sign up"
-                                                title="Sign up"
-                                            >
-                                                Dashboard
-                                            </a>
-                                        </li>
-                                    </Link>
-                                    :
-                                    <Link to={"/sign-in"}>
-                                        <li>
-                                            <a
 
-                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                aria-label="Sign up"
-                                                title="Sign up"
-                                            >
-                                                Give Rent
-                                            </a>
-                                        </li>
-                                    </Link>
-                            }
-                        </ul>
+                        
+
+                        {/* Mobile Menu */}
                         <div className="lg:hidden">
                             <button
                                 aria-label="Open Menu"
@@ -126,120 +126,6 @@ const Navbar = () => {
                                     />
                                 </svg>
                             </button>
-                            {isMenuOpen && (
-                                <div className="absolute top-0 left-0 w-full">
-                                    <div className="p-5 bg-white border rounded shadow-sm">
-                                        <div className="flex items-center justify-between mb-4">
-                                            <div>
-                                                <a
-                                                    href="/"
-                                                    aria-label="bhara.com"
-                                                    title="bhara.com"
-                                                    className="inline-flex items-center"
-                                                >
-                                                    <img
-                                                        src={logo}
-                                                        alt="bhara.com logo"
-                                                        className="w-8"
-                                                    />
-                                                    <span className="ml-2 text-xl font-bold tracking-wide uppercase">
-                                                        {/* Animating each letter */}
-                                                        <Bharaanimation></Bharaanimation>
-                                                    </span>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <button
-                                                    aria-label="Close Menu"
-                                                    title="Close Menu"
-                                                    className="p-2 -mt-2 -mr-2 transition duration-200 rounded hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                                    onClick={() => setIsMenuOpen(false)}
-                                                >
-                                                    <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
-                                                        <path
-                                                            fill="currentColor"
-                                                            d="M19.7,4.3c-0.4-0.4-1-0.4-1.4,0L12,10.6L5.7,4.3c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l6.3,6.3l-6.3,6.3 c-0.4,0.4-0.4,1,0,1.4C4.5,19.9,4.7,20,5,20s0.5-0.1,0.7-0.3l6.3-6.3l6.3,6.3c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3 c0.4-0.4,0.4-1,0-1.4L13.4,12l6.3-6.3C20.1,5.3,20.1,4.7,19.7,4.3z"
-                                                        />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <nav>
-                                            <ul className="space-y-4">
-                                                <li>
-                                                    <Link
-                                                        to={"/"}
-                                                        aria-label="Our product"
-                                                        title="Our product"
-                                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                    >
-                                                        Home
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <a
-                                                        href="/"
-                                                        aria-label="Our product"
-                                                        title="Our product"
-                                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                    >
-                                                        Premium
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <Link
-                                                        to={"/support"}
-                                                        aria-label="Product pricing"
-                                                        title="Product pricing"
-                                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                    >
-                                                        Help & Support
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <a
-                                                        href="/"
-                                                        aria-label="Product pricing"
-                                                        title="Product pricing"
-                                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                    >
-                                                        Contact
-                                                    </a>
-                                                </li>
-
-                                                {
-                                                    user ?
-                                                        <Link to={"/user/dashboard"}>
-                                                            <li>
-                                                                <a
-
-                                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                                    aria-label="Sign up"
-                                                                    title="Sign up"
-                                                                >
-                                                                    Dashboard
-                                                                </a>
-                                                            </li>
-                                                        </Link>
-                                                        :
-                                                        <Link to={"/sign-in"}>
-                                                            <li>
-                                                                <a
-
-                                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                                    aria-label="Sign up"
-                                                                    title="Sign up"
-                                                                >
-                                                                    Give Rent
-                                                                </a>
-                                                            </li>
-                                                        </Link>
-                                                }
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            )}
                         </div>
                     </div>
                 </div>

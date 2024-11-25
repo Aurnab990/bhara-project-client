@@ -1,8 +1,5 @@
 import React from 'react';
-import Usersidebar from '../UserSIdeBar/userSidebar';
-
-
-
+import Usersidebar from '../UserSIdeBar/Usersidebar';
 
 
 const UserDashboard = () => {

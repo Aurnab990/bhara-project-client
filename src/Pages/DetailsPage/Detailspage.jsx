@@ -80,7 +80,7 @@ const ProductDetails = () => {
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Phone</td>
-                                        <td className="py-2 px-4 border-b">{phone}</td>
+                                        <td className="py-2 px-4 border-b blur">{phone}</td>
                                     </tr>
                                     <tr className="hover:bg-gray-100">
                                         <td className="py-2 px-4 border-b font-medium">Reviews</td>

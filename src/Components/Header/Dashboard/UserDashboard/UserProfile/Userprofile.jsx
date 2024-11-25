@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../UserProfile/UserProfile.css';
 import useAuth from '../../../../../Hooks/useAuth';
 import { Link } from 'react-router-dom';
-import Usersidebar from '../../UserSIdeBar/userSidebar';
+import Usersidebar from '../../UserSIdeBar/Usersidebar';
+
 
 const Userprofile = () => {
     const { user } = useAuth(); // Using auth hook to get user object

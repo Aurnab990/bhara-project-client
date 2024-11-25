@@ -53,6 +53,12 @@ const Usersidebar = () => {
                         </Link>
                     </li>
                     <li className="flex items-center hover:bg-gray-700 p-2 rounded-lg">
+                        <BellIcon className="h-6 w-6 mr-3" />
+                        <Link to={'/user/notification'} className="block">
+                            Notifications
+                        </Link>
+                    </li>
+                    <li className="flex items-center hover:bg-gray-700 p-2 rounded-lg">
                         <UserIcon className="h-6 w-6 mr-3" />
                         <Link to={'/user/profile'} className="block">
                             Profile
@@ -88,12 +94,7 @@ const Usersidebar = () => {
                             Settings
                         </a>
                     </li>
-                    <li className="flex items-center hover:bg-gray-700 p-2 rounded-lg">
-                        <BellIcon className="h-6 w-6 mr-3" />
-                        <a href="#notifications" className="block">
-                            Notifications
-                        </a>
-                    </li>
+                    
                     <li className="flex items-center hover:bg-gray-700 p-2 rounded-lg">
                         <HomeIcon className="h-6 w-6 mr-3" />
                         <Link to={'/'} className="block">

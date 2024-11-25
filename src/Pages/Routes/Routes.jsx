@@ -14,6 +14,9 @@ import Manageitems from "../../Components/Header/Dashboard/UserDashboard/ManageI
 import Orderpage from "../OrderPage/Orderpage.jsx";
 import Manageorder from "../../Components/Header/Dashboard/UserDashboard/ManageOrders/Manageorder.jsx";
 import Myorders from "../../Components/Header/Dashboard/UserDashboard/MyOrders/Myorders.jsx";
+import Payment from "../../Components/Header/Dashboard/UserDashboard/PaymentOrder/Payment.jsx";
+import Notification from "../../Components/Header/Dashboard/UserDashboard/Notification/Notification.jsx";
+import Premium from "../PremiumMember/Premium.jsx";
 
 
 export const router = createBrowserRouter([
@@ -49,6 +52,15 @@ export const router = createBrowserRouter([
         element:(
             <Private>
                 <UserDashboard></UserDashboard>
+            </Private>
+        )
+
+    },
+    {
+        path: "/user/notification",
+        element:(
+            <Private>
+                <Notification></Notification>
             </Private>
         )
 
@@ -90,6 +102,16 @@ export const router = createBrowserRouter([
 
     },
     {
+        path: "/user/orders/transaction/:id",
+        element: (
+            <Private>
+                <Payment></Payment>
+            </Private>
+        )
+        
+
+    },
+    {
         path: "/user/orders-manage",
         element: (
             <Private>
@@ -115,6 +137,10 @@ export const router = createBrowserRouter([
     {
         path: "/sign-up",
         element: <SignUp></SignUp>
+    },
+    {
+        path: "/premium-member",
+        element: <Premium></Premium>
     },
     {
         path: "/support",

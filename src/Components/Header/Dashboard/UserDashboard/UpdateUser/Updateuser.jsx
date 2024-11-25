@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import useAuth from '../../../../../Hooks/useAuth';
 import { useParams } from 'react-router-dom';
-import Usersidebar from '../../UserSIdeBar/userSidebar';
+import Usersidebar from '../../UserSIdeBar/Usersidebar';
+
 
 const UpdateUser = () => {
     const {user} = useAuth();
