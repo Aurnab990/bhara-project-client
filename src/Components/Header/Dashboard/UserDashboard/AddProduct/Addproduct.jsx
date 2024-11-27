@@ -23,7 +23,7 @@ const AddProduct = () => {
     useEffect(() => {
         const userEmail = user?.email;
         if (userEmail) {
-            fetch(`https://bhara-project-server.onrender.com/users?email=${userEmail}`)
+            fetch(`https://bhara-project-server.vercel.app/users?email=${userEmail}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data) {
@@ -95,7 +95,7 @@ const AddProduct = () => {
             images: imageUrls // Array of image URLs
         };
 
-        fetch('https://bhara-project-server.onrender.com/products', {
+        fetch('https://bhara-project-server.vercel.app/products', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

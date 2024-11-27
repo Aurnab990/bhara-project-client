@@ -23,7 +23,7 @@ const UpdateUser = () => {
         const district = form.district.value;
 
         const userData = {name,email,phone,title,thana,zila,district}
-        fetch(`https://bhara-project-server.onrender.com/users/${id}`, {
+        fetch(`https://bhara-project-server.vercel.app/users/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

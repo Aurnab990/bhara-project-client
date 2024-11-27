@@ -42,74 +42,67 @@ const Navbar = () => {
 
                         {/* Navbar Links */}
                         <ul className="flex items-center hidden space-x-8 lg:flex">
-    <li>
-        <Link
-            to={"/"}
-            aria-label="Our product"
-            title="Our product"
-            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
-        >
-            Home
-        </Link>
-    </li>
+                            <li>
+                                <Link
+                                    to="/"
+                                    aria-label="Our product"
+                                    title="Our product"
+                                    className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
+                                >
+                                    Home
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/premium-member"
+                                    aria-label="Premium membership"
+                                    title="Premium membership"
+                                    className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
+                                >
+                                    Premium
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/support"
+                                    aria-label="Help & Support"
+                                    title="Help & Support"
+                                    className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
+                                >
+                                    Help & Support
+                                </Link>
+                            </li>
+                            {user ? (
+                                <Link to="/user/dashboard" className="relative flex items-center space-x-4">
+                                    <img
+                                        src={user?.photoURL || blankAvatar}
+                                        alt="User"
+                                        className="w-10 h-10 rounded-full border-2 border-gray-300"
+                                        title="User Profile"
+                                    />
+                                </Link>
+                            ) : (
+                                <Link to="/sign-in">
+                                    <li>
+                                        <a
+                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                            aria-label="Sign up"
+                                            title="Sign up"
+                                        >
+                                            Give Rent
+                                        </a>
+                                    </li>
+                                </Link>
+                            )}
+                        </ul>
 
-    <li>
-        <Link
-            to={"/premium-member"}
-            aria-label="Product pricing"
-            title="Product pricing"
-            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
-        >
-            Premium
-        </Link>
-    </li>
-    <li>
-        <Link
-            to={"/support"}
-            aria-label="Product pricing"
-            title="Product pricing"
-            className="font-medium tracking-wide text-black transition-colors duration-200 hover:text-teal-accent-400"
-        >
-            Help & Support
-        </Link>
-    </li>
-
-    {
-        user ? (
-            <Link to={"/user/dashboard"} className="relative flex items-center space-x-4">
-                <img
-                    src={user?.photoURL || blankAvatar}
-                    alt="User"
-                    className="w-10 h-10 rounded-full border-2 border-gray-300"
-                    title="User Profile"
-                />
-            </Link>
-        ) : (
-            <Link to={"/sign-in"}>
-                <li>
-                    <a
-                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-100 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                        aria-label="Sign up"
-                        title="Sign up"
-                    >
-                        Give Rent
-                    </a>
-                </li>
-            </Link>
-        )
-    }
-</ul>
-
-
-                        
-
-                        {/* Mobile Menu */}
+                        {/* Mobile Menu Button */}
                         <div className="lg:hidden">
                             <button
                                 aria-label="Open Menu"
                                 title="Open Menu"
                                 className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
-                                onClick={() => setIsMenuOpen(true)}
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
                             >
                                 <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
                                     <path
@@ -128,6 +121,66 @@ const Navbar = () => {
                             </button>
                         </div>
                     </div>
+                </div>
+
+                {/* Mobile Menu */}
+                <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-white shadow-lg`}>
+                    <ul className="flex flex-col items-start space-y-4 px-4 py-4">
+                        <li>
+                            <Link
+                                to="/"
+                                aria-label="Our product"
+                                title="Our product"
+                                className="block text-gray-800 font-medium transition-colors duration-200 hover:text-teal-500"
+                            >
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/premium-member"
+                                aria-label="Premium membership"
+                                title="Premium membership"
+                                className="block text-gray-800 font-medium transition-colors duration-200 hover:text-teal-500"
+                            >
+                                Premium
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/support"
+                                aria-label="Help & Support"
+                                title="Help & Support"
+                                className="block text-gray-800 font-medium transition-colors duration-200 hover:text-teal-500"
+                            >
+                                Help & Support
+                            </Link>
+                        </li>
+                        {user ? (
+                            <li>
+                                <Link
+                                    to="/user/dashboard"
+                                    className="flex items-center space-x-4"
+                                >
+                                    <img
+                                        src={user?.photoURL || blankAvatar}
+                                        alt="User"
+                                        className="w-10 h-10 rounded-full border-2 border-gray-300"
+                                    />
+                                    <span className="text-gray-800 font-medium">Dashboard</span>
+                                </Link>
+                            </li>
+                        ) : (
+                            <li>
+                                <Link
+                                    to="/sign-in"
+                                    className="block w-full text-center bg-purple-600 text-white font-medium py-2 rounded-md transition-colors duration-200 hover:bg-purple-700"
+                                >
+                                    Give Rent
+                                </Link>
+                            </li>
+                        )}
+                    </ul>
                 </div>
             </div>
         </div>

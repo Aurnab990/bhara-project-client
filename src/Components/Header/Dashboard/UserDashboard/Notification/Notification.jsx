@@ -10,7 +10,7 @@ const Notification = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://bhara-project-server.onrender.com/orders/provider/${user.email}`)
+      fetch(`https://bhara-project-server.vercel.app/orders/provider/${user.email}`)
         .then((res) => {
           if (!res.ok) {
             throw new Error('Failed to fetch notifications');

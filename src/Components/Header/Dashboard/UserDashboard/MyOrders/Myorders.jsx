@@ -11,7 +11,7 @@ const MyOrders = () => {
     useEffect(() => {
         // Fetch orders only if the user is logged in
         if (user?.email) {
-            fetch(`https://bhara-project-server.onrender.com/orders/user/${user.email}`) // Fetch orders for the specific user
+            fetch(`https://bhara-project-server.vercel.app/orders/user/${user.email}`) // Fetch orders for the specific user
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error('Failed to fetch orders'); // Handle HTTP errors

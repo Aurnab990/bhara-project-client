@@ -27,12 +27,12 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home></Home>,
-                loader:()=>fetch('https://bhara-project-server.onrender.com/products')
+                loader:()=>fetch('https://bhara-project-server.vercel.app/products')
             },
             {
                 path:"/product/details/:id",
                 element:<Detailspage></Detailspage>,
-                loader:({params})=>fetch(`https://bhara-project-server.onrender.com/products/${params.id}`)
+                loader:({params})=>fetch(`https://bhara-project-server.vercel.app/products/${params.id}`)
             }
         ]
     },
@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
                 
             </Private>
         ),
-        loader:({params})=>fetch(`https://bhara-project-server.onrender.com/products/${params.id}`)
+        loader:({params})=>fetch(`https://bhara-project-server.vercel.app/products/${params.id}`)
 
     },
     {
@@ -127,7 +127,7 @@ export const router = createBrowserRouter([
                 <Updateuser></Updateuser>
             </Private>
         ),
-        loader:({params})=>fetch(`https://bhara-project-server.onrender.com/users/${params.id}`)
+        loader:({params})=>fetch(`https://bhara-project-server.vercel.app/users/${params.id}`)
 
     },
     {

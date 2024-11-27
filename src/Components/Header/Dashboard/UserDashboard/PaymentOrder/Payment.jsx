@@ -18,7 +18,7 @@ const Payment = () => {
         event.preventDefault(); // Prevent page reload
 
         // Send transaction ID to the server
-        fetch(`https://bhara-project-server.onrender.com/orders/transaction/${order._id}`, {
+        fetch(`https://bhara-project-server.vercel.app/orders/transaction/${order._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

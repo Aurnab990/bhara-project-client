@@ -8,7 +8,7 @@ const Manageorder = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`https://bhara-project-server.onrender.com/orders/provider/${user.email}`)
+            fetch(`https://bhara-project-server.vercel.app/orders/provider/${user.email}`)
                 .then(res => res.json())
                 .then(data => setOrders(data))
                 .catch(err => console.error('Failed to fetch orders', err));
@@ -16,7 +16,7 @@ const Manageorder = () => {
     }, [user?.email]);
 
     const handleAccept = (orderId) => {
-        fetch(`https://bhara-project-server.onrender.com/orders/${orderId}`, {
+        fetch(`https://bhara-project-server.vercel.app/orders/${orderId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ status: 'accepted' }),
@@ -31,7 +31,7 @@ const Manageorder = () => {
     };
 
     const handleDecline = (orderId) => {
-        fetch(`https://bhara-project-server.onrender.com/orders/${orderId}`, {
+        fetch(`https://bhara-project-server.vercel.app/orders/${orderId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ status: 'declined' }),
