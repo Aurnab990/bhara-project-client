@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Usersidebar from '../../UserSIdeBar/Usersidebar';
 import useAuth from '../../../../../Hooks/useAuth';
 
-
 const Manageitems = () => {
     const { user } = useAuth(); // Get the logged-in user's info
     const [products, setProducts] = useState([]);

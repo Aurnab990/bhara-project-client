@@ -23,7 +23,7 @@ const GoogleLogin = () => {
                     verification: ''
                 };
 
-                const response = await fetch('https://bhara-project-server.onrender.com/users', {
+                const response = await fetch('https://bhara-project-server.vercel.app/users', {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json"
